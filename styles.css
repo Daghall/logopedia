@@ -1,0 +1,53 @@
+body {
+  font-family: sans-serif;
+  padding-top: 10vh;
+  margin: 0 auto;
+  width: 75%;
+  height: 100vh;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+input, button {
+  width: 5vh;
+  height: 5vh;
+  margin: 0;
+  font-size: 24px;
+  background-color: wheat;
+  border: 1px solid goldenrod;
+  border-radius: 5px;
+}
+
+#word-family {
+  font-size: 64px;
+  margin: 20px 20px 0;
+  color: rosybrown;
+}
+
+#image {
+  width: 50vw;
+  height: 50vw;
+  margin: 10px auto 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#word {
+  font-size: 64px;
+  margin: 20px;
+  color: saddlebrown;
+}
+
+#next {
+  width: initial;
+}
+
+#counter {
+  margin-top: 10px;
+  color: darkgray;
+}
+
+/* #progress { */
+/* } */
