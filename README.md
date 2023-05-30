@@ -28,3 +28,4 @@ All images are collected from royalty-free sources:
 - https://openclipart.org/
 - https://publicdomainvectors.org/
 - https://clipground.com/
+- https://convertio.co/ (raster to vectors)
