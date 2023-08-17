@@ -88,11 +88,22 @@ const WORD_DELAY_MS = 1000;
       wordFamily.innerText = name;
     }
 
-    wordContainer.innerText = list[0];
-    image.style.backgroundImage = `url('./img/${list[0]}.svg')`;
+    const word = list[0];
+    const imageUrl = `./img/${word}.svg`;
+    wordContainer.innerText = word;
+    image.style.backgroundImage = `url(${imageUrl})`;
     counter.innerText = `${currentWordIndex}/${totalWords}`;
+    tryLoadingImage(image, imageUrl);
   }
 })();
+
+function tryLoadingImage(image, source) {
+  const preload = document.createElement("img");
+  preload.onerror = () => {
+    image.style.backgroundImage = "url(./img/question-mark.svg)";
+  };
+  preload.src = source;
+}
 
 function setUpWords(rounds = 3, number = 2) {
   const wordArray = Object.entries(words)
