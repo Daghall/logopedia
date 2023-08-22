@@ -1,6 +1,7 @@
 import words from "./words.js";
 
 const WORD_DELAY_MS = 1000;
+const LOCAL_STORAGE_NAME = "smilies";
 
 (async () => {
   const voice = await getVoice();
@@ -76,7 +77,7 @@ const WORD_DELAY_MS = 1000;
 
     if (list.length === 0) {
       if (wordLists.length === 0) {
-        document.body.innerHTML = "<h1>Färdig!</h1><img id='image' src='./img/fireworks-blue.svg'>";
+        finished();
         return;
       }
 
@@ -128,6 +129,59 @@ function setUpProgressBar(progress, wordLists) {
   progress.max = max;
 }
 
+function finished() {
+  const today = getDate();
+  const greating =
+    randomElement([
+      "Färdig",
+      "Bra jobbat",
+      "Stark kämpat",
+      "Klar",
+    ]);
+  const markup = [
+    `<h1>${greating}!</h1>`,
+  ];
+  let smilies;
+
+  try {
+    smilies = JSON.parse(localStorage.getItem(LOCAL_STORAGE_NAME));
+    if (!smilies) {
+      throw new Error("No smiley history");
+    }
+  } catch {
+    smilies = {};
+  }
+
+  if (!smilies[today]) {
+    const smiley = getRandomSmiley();
+    smilies[today] = smiley;
+    localStorage.setItem(LOCAL_STORAGE_NAME, JSON.stringify(smilies));
+    markup.push(`<div id="smiley">${smiley}</div>`);
+  } else {
+    markup.push("Dagens smiley är redan insamlad!");
+  }
+
+  markup.push(`Samlade smilies: ${Object.keys(smilies).length}`);
+
+  document.body.innerHTML = markup.join("\n");
+}
+
+function getDate() {
+  return new Date().toLocaleDateString("sv-SE", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric"});
+}
+
+function getRandomSmiley() {
+  const smilies = [
+    "😃", "😄", "😁", "😆", "🙂", "😊",
+    "😇", "🥰", "😍", "🤩", "🤗", "🤠",
+    "🥳", "😎", "🤓", "😸", "😹", "😻",
+  ];
+  return randomElement(smilies);
+}
+
 function parseQueryString() {
   return location.search
     .slice(1)
@@ -145,7 +199,7 @@ function shuffleNoRepeat(array) {
   let previous = null;
 
   while (shuffledArray.length < array.length) {
-    const randomIndex = Math.random() * arrayCopy.length;
+    const randomIndex = getRandomIndex(arrayCopy);
     const [ randomItem ] = arrayCopy.splice(randomIndex, 1);
 
     if (randomItem === previous && arrayCopy.length > 1) {
@@ -156,5 +210,26 @@ function shuffleNoRepeat(array) {
     }
   }
 
+  // Sometimes the last two items are identical.
+  // Swap the last item with the first differing item
+  const ultimateItem = shuffledArray.at(-1);
+  const penultimateItem = shuffledArray.at(-2);
+
+  if (ultimateItem === penultimateItem) {
+    const newIndex = shuffledArray.findIndex((item) => item !== ultimateItem);
+    const temp = shuffledArray[newIndex];
+    shuffledArray[newIndex] = ultimateItem;
+    shuffledArray[shuffledArray.length - 1] = temp;
+  }
+
   return shuffledArray;
+}
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+function randomElement(array) {
+  const randomIndex = getRandomIndex(array);
+  return array[randomIndex];
 }

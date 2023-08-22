@@ -49,5 +49,41 @@ input, button {
   color: darkgray;
 }
 
-/* #progress { */
-/* } */
+#smiley {
+  line-height: 100px;
+  height: 100px;
+  animation-duration: 0.6s;
+  animation-name: slidein;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  margin-bottom: 30px;
+}
+
+@keyframes slidein {
+  from {
+    font-size: 1px;
+  }
+  40% {
+    font-size: 80px;
+  }
+  60% {
+    transform: rotate(0deg);
+    font-size: 100px;
+  }
+  65% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+  85% {
+    transform: rotate(-6deg);
+  }
+  95% {
+    transform: rotate(4deg);
+  }
+  100% {
+    transform: rotate(0deg);
+    font-size: 100px;
+  }
+}
