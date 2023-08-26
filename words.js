@@ -162,4 +162,20 @@ export default {
     "skära",
     "spara",
   ],
+  "-ng-": [
+    "ängel",
+    "pengar",
+    "lunga",
+    "finger",
+    "pingvin",
+    "tunga",
+  ],
+  "-ng": [
+    "ballong",
+    "säng",
+    "äng",
+    "lång",
+    "tång",
+    "ring",
+  ],
 };
