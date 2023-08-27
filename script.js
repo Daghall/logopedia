@@ -14,6 +14,11 @@ const LOCAL_STORAGE_NAME = "smilies";
   const list = [];
   const wordLists = setUpWords(queryString.rounds, queryString.number);
 
+  if (Object.hasOwn(queryString, "end")) {
+    finished(true);
+    return;
+  }
+
   let currentWordIndex;
   let totalWords;
   setUpProgressBar(progress, wordLists);
@@ -69,7 +74,7 @@ const LOCAL_STORAGE_NAME = "smilies";
     ++currentWordIndex;
     ++progress.value;
 
-    const wordDelayMs = queryString .delay;
+    const wordDelayMs = queryString.delay;
 
     setTimeout(() => {
       next.disabled = false;
@@ -129,7 +134,7 @@ function setUpProgressBar(progress, wordLists) {
   progress.max = max;
 }
 
-function finished() {
+function finished(forceNew = false) {
   const today = getDate();
   const greating =
     randomElement([
@@ -152,11 +157,11 @@ function finished() {
     smilies = {};
   }
 
-  if (!smilies[today]) {
+  if (!smilies[today] || forceNew) {
     const smiley = getRandomSmiley();
     smilies[today] = smiley;
     localStorage.setItem(LOCAL_STORAGE_NAME, JSON.stringify(smilies));
-    markup.push(`<div id="smiley">${smiley}</div>`);
+    markup.push(`<div id="smiley" class="fadein">${smiley}</div>`);
   } else {
     markup.push("Dagens smiley är redan insamlad!");
   }
@@ -164,6 +169,20 @@ function finished() {
   markup.push(`Samlade smilies: ${Object.keys(smilies).length}`);
 
   document.body.innerHTML = markup.join("\n");
+
+  // Wiggle smiley when clicked
+  const smiley = document.getElementById("smiley");
+  smiley.addEventListener("animationend", () => {
+    if (smiley.classList.contains("fadein")) {
+      smiley.classList.remove("fadein");
+      smiley.classList.add("wiggle");
+    } else {
+      smiley.classList.remove("wiggle");
+    }
+  });
+  smiley.addEventListener("click", () => {
+    smiley.classList.add("wiggle");
+  });
 }
 
 function getDate() {
