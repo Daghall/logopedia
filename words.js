@@ -172,6 +172,7 @@ export default {
   ],
   "-ng": [
     "ballong",
+    "kung",
     "säng",
     "äng",
     "lång",
