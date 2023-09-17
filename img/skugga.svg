@@ -1,0 +1,25 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 308 246" width="308" height="246">
+	<title>New Project</title>
+	<defs>
+		<linearGradient id="g1" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(88.575,0,0,157.389,14.426,154.285)">
+			<stop offset="0" stop-color="#8291fe"/>
+			<stop offset=".477" stop-color="#4f5fd3"/>
+			<stop offset="1" stop-color="#1829a4"/>
+		</linearGradient>
+		<linearGradient id="g2" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(88.575,0,0,19.834,14.426,222.916)">
+			<stop offset="0" stop-color="#8291fe"/>
+			<stop offset=".477" stop-color="#4f5fd3"/>
+			<stop offset="1" stop-color="#1829a4"/>
+		</linearGradient>
+	</defs>
+	<style>
+		.s0 { opacity: .4;fill: #000000;stroke: #000000;stroke-width: .5 } 
+		.s1 { fill: url(#g1);stroke: #000000;stroke-width: .5 } 
+		.s2 { fill: #8291fe;stroke: #000000;stroke-width: .5 } 
+		.s3 { fill: url(#g2) } 
+	</style>
+	<path id="Background copy" class="s0" d="m266 59.9c13.6 11.3 19.6 24.2 13.1 29.2-6.5 5-23.2 0.3-36.9-11-5-4.2-9-8.6-11.7-12.8-4.7-7.3-5.2-14.2-1-17.4 6.7-5.1 22.8 0.5 36.5 12zm-164.6 166.2l-53.4-39.3 181.5-138.9 49.6 41.2z"/>
+	<path id="Background" class="s1" d="m103 223.4c0 5.5-19.8 9.6-44.3 9.6-24.5 0-44.3-4.1-44.3-9.6m0-147.8h88.6v147.8h-88.6z"/>
+	<path id="Layer 1" class="s2" d="m58.7 85.8c-24.5 0-44.3-4.4-44.3-9.9 0-5.5 19.8-9.9 44.3-9.9 24.5 0 44.3 4.4 44.3 9.9 0 5.5-19.8 9.9-44.3 9.9z"/>
+	<path id="Layer 1 copy" class="s3" d="m58.7 232.8c-24.5 0-44.3-4.4-44.3-9.9 0-5.5 19.8-9.9 44.3-9.9 24.5 0 44.3 4.4 44.3 9.9 0 5.5-19.8 9.9-44.3 9.9z"/>
+</svg>
