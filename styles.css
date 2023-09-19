@@ -58,6 +58,7 @@ input, button {
   animation-fill-mode: forwards;
   margin-bottom: 30px;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #smiley.fadein {
